@@ -29,24 +29,28 @@ pledge_histogram = {}
 def histogram_old(s):
     d = dict()
     for c in s:
-        if c not in d:
-            d[c] = 1
-        else:
-            d[c] += 1
+        d[c] = d.get(c, 0) + 1
     return d
 
 
 def histogram_new(s):
-    ...
+    dictionary = {}
+    for word in s:
+        dictionary[word] = dictionary.get(word, 0) + 1
+    return dictionary
 
 
 def get_pledge_list():
-    """ Opens pledge.txt and converts to a list, each item is a word in
-    the order it appears in the original file. returns the list.
-    """
-    # Your code here.
-    pass
-    # return pledge_list (uncomment this)
+    with open("pledge.txt", "r") as doc:
+        text = doc.readlines()
+        pledge_list = []
+        for line in text:
+            word_list = line.split()  # creates list of words per line
+            for word in word_list:
+                # appends the stripped words to the pledge word list and does
+                # so for each line
+                pledge_list.append(word.strip("," "." ":"))
+    return pledge_list
 
 
 ###############################################################################

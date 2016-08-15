@@ -28,20 +28,56 @@ def invert_dict_old(d):
 
 
 def invert_dict_new(d):
-    pass
+    inverse = dict()
+    for key in d:
+        val = d[key]
+        inverse.setdefault(val, []).append(key)
+    return inverse
 
 
 def print_hist_newest(d):
-    pass
+    list_of_keys = d.keys()
+    list_of_keys = sorted(list_of_keys)
+    counter = 1
+    for key in list_of_keys:
+        while counter != key:
+            print("{}: []".format(counter))
+            counter += 1
+        print('{}: {}'.format(key, sorted(d[key])))
+        counter += 1
+
+
+###############################################################################
+# INSERT COMPLETED CODE FROM HW08_ch11_ex02a BELOW: ###########################
+###############################################################################
+def histogram_new(s):
+    dictionary = {}
+    for word in s:
+        dictionary[word] = dictionary.get(word, 0) + 1
+    return dictionary
+
+
+def get_pledge_list():
+    with open("pledge.txt", "r") as doc:
+        text = doc.readlines()
+        pledge_list = []
+        for line in text:
+            word_list = line.split()
+            for word in word_list:
+                if word == "I":
+                    word = word.strip()
+                    pledge_list.append(word)
+                else:
+                    word = word.lower()
+                    word = word.strip("." "," ":")
+                    pledge_list.append(word)
+    return pledge_list
 
 ###############################################################################
 # INSERT COMPLETED CODE FROM HW08_ch11_ex02a BELOW: ###########################
 ###############################################################################
 
 
-###############################################################################
-# INSERT COMPLETED CODE FROM HW08_ch11_ex02a BELOW: ###########################
-###############################################################################
 def main():  # DO NOT CHANGE BELOW
     pledge_histogram = histogram_new(get_pledge_list())
     pledge_invert = invert_dict_new(pledge_histogram)

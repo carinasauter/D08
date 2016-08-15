@@ -16,28 +16,59 @@
 
 
 # Body
-def print_hist_old(h):
-    for c in h:
-        print(c, h[c])
+# def print_hist_old(h):
+#     for c in h:
+#         print(c, h[c])
+
+def print_hist_new(d):
+	list_of_keys = d.keys()
+	list_of_keys = sorted(list_of_keys)
+	for key in list_of_keys:
+		print("{}: {}".format(key, d[key]))
+
+###############################################################################
+# INSERT COMPLETED CODE FROM HW08_ch11_ex02a BELOW: ###########################
+###############################################################################
+
+def histogram_old(s):
+    d = dict()
+    for c in s:
+        d[c] = d.get(c, 0) + 1
+    return d
 
 
-def print_hist_new(h):
-    pass
+def histogram_new(s):
+    dictionary = {}
+    for word in s:
+        dictionary[word] = dictionary.get(word, 0) + 1
+    return dictionary
 
+
+def get_pledge_list():
+    with open("pledge.txt", "r") as doc:
+        text = doc.readlines()
+        pledge_list = []
+        for line in text:
+            word_list = line.split()
+            for word in word_list:
+                if word == "I":
+                    word = word.strip()
+                    pledge_list.append(word)
+                else:
+                    word = word.lower()
+                    word = word.strip("." "," ":")
+                    pledge_list.append(word)
+    return pledge_list
 
 ###############################################################################
 # INSERT COMPLETED CODE FROM HW08_ch11_ex02a BELOW: ###########################
 ###############################################################################
 
 
-###############################################################################
-# INSERT COMPLETED CODE FROM HW08_ch11_ex02a BELOW: ###########################
-###############################################################################
 def main():
-    """ Calls print_hist_new with the appropriate arguments to print the
-    histogram of pledge.txt.
-    """
-    pass
+
+    print_hist_new(histogram_new(get_pledge_list()))
+
 
 if __name__ == '__main__':
     main()

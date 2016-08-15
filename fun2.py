@@ -4,12 +4,12 @@
 # Modify the variables so that all of the statements evaluate to True. ########
 ###############################################################################
 
-var1 = 
-var2 = 
-var3 = 
-var4 = 
-var5 = 
-var6 = 
+var1 = 5  # int <35 and less than or equal to 6
+var2 = "python"   # str p****n****..
+var3 = [1, 2, 3, 4, 5]  # list len 5 [*, *, *, *, *]
+var4 = (2, 3, "Hello, Python!")  # tuple (*, *, "Hello, Python!", *, ....)# dictionary (happy:*, tuna:7, egg:salad)
+var5 = {'happy': 'face', 'tuna': 7, 'egg': 'salad'}
+var6 = 6.7
 
 ###############################################################################
 # Don't edit anything below this comment ######################################
